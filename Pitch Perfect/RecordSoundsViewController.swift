@@ -19,13 +19,14 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     var recordedAudio:RecordedAudio!
     
     enum UIStates {
-        case Recording, Stopped, Paused
+        case PreRecording, Recording, Stopped, Paused
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        setViewStateTo(UIStates.PreRecording)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -96,7 +97,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             recordingStatus.text = "Recording in progress"
             recordButton.enabled = false
             stopButton.hidden = false
-        case .Stopped:
+        case .Stopped, .PreRecording:
             stopButton.hidden = true
             recordingStatus.text = "Tap to record"
             recordButton.enabled = true
