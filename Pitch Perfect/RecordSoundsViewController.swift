@@ -18,6 +18,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     var audioRecorder:AVAudioRecorder!
     var recordedAudio:RecordedAudio!
     
+    enum UIStates {
+        case Recording, Stopped, Paused
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -44,7 +48,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     @IBAction func recordAudio(sender: UIButton) {
-        setViewToRecordingState(true)
+        setViewStateTo(UIStates.Recording)
         
         //create the file path and file name of where we'll store the recorded audio
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
@@ -64,7 +68,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     @IBAction func stopRecordingAudio(sender: UIButton) {
-        setViewToRecordingState(false)
+        setViewStateTo(UIStates.Stopped)
         
         //stop the audio recorder and deactivate the audio session
         audioRecorder.stop()
@@ -86,15 +90,18 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     /* this helper function will set the state of the view components appropriately based on whether the UI is recording or not recording */
-    func setViewToRecordingState(isRecording: Bool) {
-        if (isRecording) {
+    func setViewStateTo(state: UIStates) {
+        switch (state) {
+        case .Recording:
             recordingStatus.text = "Recording in progress"
             recordButton.enabled = false
             stopButton.hidden = false
-        } else {
+        case .Stopped:
             stopButton.hidden = true
             recordingStatus.text = "Tap to record"
             recordButton.enabled = true
+        case .Paused:
+            break;
         }
     }
    
