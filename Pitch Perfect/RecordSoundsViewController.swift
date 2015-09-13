@@ -20,7 +20,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     var audioRecorder:AVAudioRecorder!
     var recordedAudio:RecordedAudio!
     
-    enum UIStates {
+    /*each enum represents a state in our View*/
+    enum ViewStates {
         case PreRecording, Recording, Stopped, Paused
     }
     
@@ -28,7 +29,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        setViewStateTo(UIStates.PreRecording)
+        setViewStateTo(ViewStates.PreRecording)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -51,7 +52,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     @IBAction func recordAudio(sender: UIButton) {
-        setViewStateTo(UIStates.Recording)
+        setViewStateTo(ViewStates.Recording)
         
         //create the file path and file name of where we'll store the recorded audio
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
@@ -71,7 +72,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     @IBAction func stopRecordingAudio(sender: UIButton) {
-        setViewStateTo(UIStates.Stopped)
+        setViewStateTo(ViewStates.Stopped)
         
         //stop the audio recorder and deactivate the audio session
         audioRecorder.stop()
@@ -80,13 +81,13 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     @IBAction func pauseRecordingAudio(sender: AnyObject) {
-        setViewStateTo(UIStates.Paused)
+        setViewStateTo(ViewStates.Paused)
         
         audioRecorder.pause()
     }
     
     @IBAction func continueRecordingAudio(sender: AnyObject) {
-        setViewStateTo(UIStates.Recording)
+        setViewStateTo(ViewStates.Recording)
         
         audioRecorder.record()
     }
@@ -104,8 +105,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
-    /* this helper function will set the state of the view components appropriately based on the states defined in the UIStates enum */
-    func setViewStateTo(state: UIStates) {
+    /* this helper function will set the state of the view components appropriately based on the states defined in the ViewStates enum */
+    func setViewStateTo(state: ViewStates) {
         switch (state) {
         case .Recording:
             recordingStatus.text = "Recording in progress"
