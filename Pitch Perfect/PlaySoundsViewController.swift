@@ -29,7 +29,6 @@ class PlaySoundsViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func stopAudio(sender: AnyObject) {
@@ -62,7 +61,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     /* this function will connect the audioUnit param to the audio engine and play the recorded audio. Used for playing audio with an AVAudioUnit effect.  */
-    func playAudioWithEffectsHelper(audioUnit: AVAudioUnit) {
+    func playAudioWithEffectsSetTo(audioUnit: AVAudioUnit) {
         stopAudio()
         
         var audioNodePlayer = AVAudioPlayerNode()
@@ -83,7 +82,7 @@ class PlaySoundsViewController: UIViewController {
     
         timePitch.pitch = pitch
         
-        playAudioWithEffectsHelper(timePitch)
+        playAudioWithEffectsSetTo(timePitch)
     }
     
     func playAudioWithReverb() {
@@ -92,14 +91,14 @@ class PlaySoundsViewController: UIViewController {
         unitReverb.loadFactoryPreset(AVAudioUnitReverbPreset.Cathedral);
         unitReverb.wetDryMix = 100;
         
-        playAudioWithEffectsHelper(unitReverb)
+        playAudioWithEffectsSetTo(unitReverb)
     }
     
     func playAudioWithEcho() {
         var timeDelay = AVAudioUnitDelay()
         timeDelay.delayTime = 0.2
         
-        playAudioWithEffectsHelper(timeDelay)
+        playAudioWithEffectsSetTo(timeDelay)
     }
     
     func playAudioWithRate(rate: Float) {
@@ -110,7 +109,7 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.play()
     }
     
-    /* performs the required steps to properly stop the audio */
+    /* performs the required steps to properly stop the audio and prevent overlap */
     func stopAudio() {
         audioPlayer.stop()
         audioEngine.stop()
