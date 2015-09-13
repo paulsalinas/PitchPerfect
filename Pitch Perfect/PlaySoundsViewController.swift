@@ -37,7 +37,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playFastAudio(sender: AnyObject) {
-        playAudioWithRate(2.0)
+        playAudioWithRate(1.5)
     }
 
     @IBAction func playChipMunkAudio(sender: AnyObject) {
@@ -58,7 +58,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playSlowAudio(sender: AnyObject) {
-        playAudioWithRate(0.3)
+        playAudioWithRate(0.5)
     }
     
     /* this function will connect the audioUnit param to the audio engine and play the recorded audio. Used for playing audio with an AVAudioUnit effect.  */

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3C48F2B31B939A790062E485 /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C48F2B21B939A790062E485 /* PlaySoundsViewController.swift */; };
-		3C48F2B51B93B00B0062E485 /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3C48F2B41B93B00B0062E485 /* movie_quote.mp3 */; };
 		3C48F2B71B9509C50062E485 /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C48F2B61B9509C50062E485 /* RecordedAudio.swift */; };
 		3CEB12C61B8E98A600390949 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB12C51B8E98A600390949 /* AppDelegate.swift */; };
 		3CEB12C81B8E98A600390949 /* RecordSoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB12C71B8E98A600390949 /* RecordSoundsViewController.swift */; };
@@ -30,7 +29,6 @@
 
 /* Begin PBXFileReference section */
 		3C48F2B21B939A790062E485 /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
-		3C48F2B41B93B00B0062E485 /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = movie_quote.mp3; sourceTree = "<group>"; };
 		3C48F2B61B9509C50062E485 /* RecordedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
 		3CEB12C01B8E98A500390949 /* Pitch Perfect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pitch Perfect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CEB12C41B8E98A600390949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 		3CEB12C31B8E98A500390949 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3C48F2B41B93B00B0062E485 /* movie_quote.mp3 */,
 				3CEB12C41B8E98A600390949 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -202,7 +199,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CEB12CB1B8E98A600390949 /* Main.storyboard in Resources */,
-				3C48F2B51B93B00B0062E485 /* movie_quote.mp3 in Resources */,
 				3CEB12D01B8E98A600390949 /* LaunchScreen.xib in Resources */,
 				3CEB12CD1B8E98A600390949 /* Images.xcassets in Resources */,
 			);

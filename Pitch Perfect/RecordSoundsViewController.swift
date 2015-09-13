@@ -14,6 +14,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var recordingStatus: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
     
     var audioRecorder:AVAudioRecorder!
     var recordedAudio:RecordedAudio!
@@ -77,6 +79,18 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioSession.setActive(false, error: nil)
     }
     
+    @IBAction func pauseRecordingAudio(sender: AnyObject) {
+        setViewStateTo(UIStates.Paused)
+        
+        audioRecorder.pause()
+    }
+    
+    @IBAction func continueRecordingAudio(sender: AnyObject) {
+        setViewStateTo(UIStates.Recording)
+        
+        audioRecorder.record()
+    }
+    
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         if (flag) {
             
@@ -90,19 +104,27 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
-    /* this helper function will set the state of the view components appropriately based on whether the UI is recording or not recording */
+    /* this helper function will set the state of the view components appropriately based on the states defined in the UIStates enum */
     func setViewStateTo(state: UIStates) {
         switch (state) {
         case .Recording:
             recordingStatus.text = "Recording in progress"
             recordButton.enabled = false
             stopButton.hidden = false
+            playButton.hidden = false
+            playButton.enabled = false
+            pauseButton.enabled = true
+            pauseButton.hidden = false
         case .Stopped, .PreRecording:
             stopButton.hidden = true
             recordingStatus.text = "Tap to record"
             recordButton.enabled = true
+            pauseButton.hidden = true
+            playButton.hidden = true
         case .Paused:
-            break;
+            recordingStatus.text = "Recording is paused"
+            playButton.enabled = true
+            pauseButton.enabled = false
         }
     }
    
