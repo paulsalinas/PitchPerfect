@@ -20,7 +20,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     var audioRecorder:AVAudioRecorder!
     var recordedAudio:RecordedAudio!
     
-    /*each enum represents a state in our View*/
+    /* each case represents a state in our View */
     enum ViewStates {
         case PreRecording, Recording, Stopped, Paused
     }
