@@ -51,7 +51,6 @@ class PlaySoundsViewController: UIViewController {
         playAudioWithReverb();
     }
     
-    
     @IBAction func playEchoAudio(sender: AnyObject) {
         playAudioWithEcho();
     }
