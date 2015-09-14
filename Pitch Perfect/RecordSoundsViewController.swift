@@ -31,14 +31,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         setViewStateTo(ViewStates.PreRecording)
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "stopRecording") {
             
@@ -95,7 +87,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             
             //create our model and initiate the segue while passing our model
             recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent)
-            self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
+            performSegueWithIdentifier("stopRecording", sender: recordedAudio)
         } else {
             println("recording was not succesful")
             recordButton.enabled = true

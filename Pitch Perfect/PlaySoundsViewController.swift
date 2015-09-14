@@ -26,10 +26,6 @@ class PlaySoundsViewController: UIViewController {
         audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
         audioEngine = AVAudioEngine();
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     @IBAction func stopAudio(sender: AnyObject) {
         stopAudio()
